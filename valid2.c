@@ -6,52 +6,72 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 14:00:49 by femarque          #+#    #+#             */
-/*   Updated: 2023/07/10 14:09:57 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/10 16:01:48 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush01.h"
 
-int	hasDuplicateInRow(int puzzle[SIZE][SIZE], int row, int col)
-{
-	int i;
-
-	i = 0;
-    while (i < col)
-	{
-        if (puzzle[row][i] == puzzle[row][col])
-            return (1);
-		i++;
+int check_top_columns(int* restrictions, int grid[SIZE][SIZE]) {
+    int col = 0;
+    while (col < SIZE) {
+        int view_count = count_visible_boxes_top_columns(col, grid);
+        if (view_count != restrictions[col]) {
+            return 0;
+        }
+        col++;
     }
-    return (0);
+    return 1;
 }
 
-int	hasDuplicateInColumn(int puzzle[SIZE][SIZE], int row, int col)
-{
-	int i;
-
-	i = 0;
-    while (i < row)
-	{
-        if (puzzle[i][col] == puzzle[row][col])
-            return (1);
+int check_bottom_columns(int* restrictions, int grid[SIZE][SIZE]) {
+    int col = 0;
+    while (col < SIZE) {
+        int view_count = count_visible_boxes_bottom_columns(col, grid);
+        if (view_count != restrictions[SIZE + col]) {
+            return 0;
+        }
+        col++;
     }
-    return (0);
+    return 1;
 }
 
-int isValid(int puzzle[SIZE][SIZE], int values[16], t_position pos)
-{
-    int row;
-    int col;
+int check_left_rows(int* restrictions, int grid[SIZE][SIZE]) {
+    int row = 0;
+    while (row < SIZE) {
+        int view_count = count_visible_boxes_left_rows(row, grid);
+        if (view_count != restrictions[2 * SIZE + row]) {
+            return 0;
+        }
+        row++;
+    }
+    return 1;
+}
 
-	row = pos.row;
-    col = pos.col;
-    if (hasDuplicateInRow(puzzle, row, col) || hasDuplicateInColumn(puzzle, row, col))
-        return (0);
-    if (!checkVisibilityLeft(puzzle, values, row, col) || \
-	!checkVisibilityRight(puzzle, values, row, col) ||
-        !checkVisibilityUp(puzzle, values, row, col) || \
-		!checkVisibilityDown(puzzle, values, row, col))
-        return (0);
-    return (1);
+int check_right_rows(int* restrictions, int grid[SIZE][SIZE]) {
+    int row = 0;
+    while (row < SIZE) {
+        int view_count = count_visible_boxes_right_rows(row, grid);
+        if (view_count != restrictions[2 * SIZE + SIZE + row]) {
+            return 0;
+        }
+        row++;
+    }
+    return 1;
+}
+
+int check_restrictions(int* restrictions, int grid[SIZE][SIZE]) {
+    if (!check_top_columns(restrictions, grid)) {
+        return 0;
+    }
+    if (!check_bottom_columns(restrictions, grid)) {
+        return 0;
+    }
+    if (!check_left_rows(restrictions, grid)) {
+        return 0;
+    }
+    if (!check_right_rows(restrictions, grid)) {
+        return 0;
+    }
+    return 1;
 }

@@ -6,100 +6,56 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 13:59:44 by femarque          #+#    #+#             */
-/*   Updated: 2023/07/10 14:45:40 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/10 16:02:10 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush01.h"
 
-int	checkVisibilityLeft(int puzzle[SIZE][SIZE], int values[16], int row, int col)
-{
-    int count;
-    int visible;
-	int i;
-
-	count = 1;
-    visible = 1;
-	i = col - 1;
-    while (i >= 0)
-	{
-        if (puzzle[row][i] > visible)
-		{
-            visible = puzzle[row][i];
-            count++;
+int count_visible_boxes_top_columns(int col, int grid[SIZE][SIZE]) {
+    int view_count = 0;
+    int max_height = 0;
+    for (int row = 0; row < SIZE; row++) {
+        if (grid[row][col] > max_height) {
+            max_height = grid[row][col];
+            view_count++;
         }
-		i--;
     }
-    if (count != values[row * SIZE + col])
-		return (0);
-	return (1);
+    return view_count;
 }
 
-int	checkVisibilityRight(int puzzle[SIZE][SIZE], int values[16], int row, int col)
-{
-	int count;
-	int visible;
-	int i;
-	
-    count = 1;
-    visible = 1;
-	i = col + 1;
-    while (i < SIZE)
-	{
-        if (puzzle[row][i] > visible)
-		{
-            visible = puzzle[row][i];
-            count++;
+int count_visible_boxes_bottom_columns(int col, int grid[SIZE][SIZE]) {
+    int view_count = 0;
+    int max_height = 0;
+    for (int row = SIZE - 1; row >= 0; row--) {
+        if (grid[row][col] > max_height) {
+            max_height = grid[row][col];
+            view_count++;
         }
-		i++;
     }
-    if (count != values[row * SIZE + col + 8])
-		return (0);
-	return (1);
+    return view_count;
 }
 
-int	checkVisibilityUp(int puzzle[SIZE][SIZE], int values[16], int row, int col)
-{
-	int count;
-	int visible;
-	int i;
-	
-	i = row - 1;
-	count = 1;
-	visible = 1;
-	while (i >= 0)
-	{
-		if (puzzle[i][col] > visible)
-		{
-			visible = puzzle[i][col];
-			count++;
-		}
-		i--;
-	}
-	if (count != values[row * SIZE + col + 4])
-		return (0);
-	return (1);
+int count_visible_boxes_left_rows(int row, int grid[SIZE][SIZE]) {
+    int view_count = 0;
+    int max_height = 0;
+    for (int col = 0; col < SIZE; col++) {
+        if (grid[row][col] > max_height) {
+            max_height = grid[row][col];
+            view_count++;
+        }
+    }
+    return view_count;
 }
 
-int	checkVisibilityDown(int puzzle[SIZE][SIZE], int values[16], int row, int col)
-{
-    int	count;
-    int	visible;
-	int	i;
-
-	count = 1;
-    visible = 1;
-	i = row + 1;
-    while (i < SIZE)
-	{
-        if (puzzle[i][col] > visible)
-		{
-            visible = puzzle[i][col];
-            count++;
+int count_visible_boxes_right_rows(int row, int grid[SIZE][SIZE]) {
+    int view_count = 0;
+    int max_height = 0;
+    for (int col = SIZE - 1; col >= 0; col--) {
+        if (grid[row][col] > max_height) {
+            max_height = grid[row][col];
+            view_count++;
         }
-		i++;
     }
-    if (count != values[row * SIZE + col + 12])
-		return (0);
-    return (1);
+    return view_count;
 }

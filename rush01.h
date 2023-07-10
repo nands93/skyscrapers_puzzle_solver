@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 13:51:33 by femarque          #+#    #+#             */
-/*   Updated: 2023/07/10 14:58:27 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/10 16:17:52 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,26 @@
 
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 
-typedef struct s_position {
-    int row;
-    int col;
-} t_position;
-
-int		ft_atoi(char *str);
-int		hasDuplicateInRow(int puzzle[SIZE][SIZE], int row, int col);
-int		hasDuplicateInColumn(int puzzle[SIZE][SIZE], int row, int col);
-int		checkVisibilityLeft(int puzzle[SIZE][SIZE], int values[16], int row, int col);
-int		checkVisibilityRight(int puzzle[SIZE][SIZE], int values[16], int row, int col);
-int		checkVisibilityUp(int puzzle[SIZE][SIZE], int values[16], int row, int col);
-int		checkVisibilityDown(int puzzle[SIZE][SIZE], int values[16], int row, int col);
-int		isValid(int puzzle[SIZE][SIZE], int values[16], t_position pos);
-int		solvePuzzle(int puzzle[SIZE][SIZE], int values[16], t_position pos);
+int count_visible_boxes_top_columns(int col, int grid[SIZE][SIZE]);
+int count_visible_boxes_bottom_columns(int col, int grid[SIZE][SIZE]);
+int count_visible_boxes_left_rows(int row, int grid[SIZE][SIZE]);
+int count_visible_boxes_right_rows(int row, int grid[SIZE][SIZE]);
+int check_restrictions(int* restrictions, int grid[SIZE][SIZE]);
+int check_right_rows(int* restrictions, int grid[SIZE][SIZE]);
+int check_left_rows(int* restrictions, int grid[SIZE][SIZE]);
+int check_bottom_columns(int* restrictions, int grid[SIZE][SIZE]);
+int check_top_columns(int* restrictions, int grid[SIZE][SIZE]);
+int is_valid(int row, int col, int value, int grid[SIZE][SIZE]);
+int fill_grid(int row, int col, int* restrictions, int grid[SIZE][SIZE]);
+void print_grid(int grid[SIZE][SIZE]);
 void	*ft_memset(void *b, int c, size_t len);
-void	printPuzzle(int puzzle[SIZE][SIZE]);
-void	ft_putchar(char c);
-void	ft_putstr(char *str);
+int	ft_atoi(char *str);
 void	ft_putnbr(int n);
+void	ft_putstr(char *str);
+void	ft_putchar(char c);
+void	ft_putendl_fd(char *s, int fd);
+int	ft_error(char *s);
 
 #endif
