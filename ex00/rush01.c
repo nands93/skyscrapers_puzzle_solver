@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 13:57:31 by femarque          #+#    #+#             */
-/*   Updated: 2023/07/11 13:15:01 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/11 14:43:10 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,11 @@ int	main(int argc, char **argv)
 	if (argc != 17)
 	{
 		ft_error("Error");
-		return (0);
+		return (1);
 	}
-	i = 1;
-	while (i < argc)
-	{
+	i = 0;
+	while (++i < argc)
 		res[i - 1] = ft_atoi(argv[i]);
-		i++;
-	}
 	if (fill_grid(0, 0, res, grid))
 		print_grid(grid);
 	else

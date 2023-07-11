@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 13:54:11 by femarque          #+#    #+#             */
-/*   Updated: 2023/07/11 13:57:59 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/11 14:41:33 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_putstr(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0')
+	while (str[i])
 	{
 		ft_putchar(str[i]);
 		i++;
@@ -59,7 +59,7 @@ int	ft_atoi(char *str)
 		sign = -1;
 		i++;
 	}
-	while (str[i] != '\0')
+	while (str[i])
 	{
 		result = result * 10 + str[i] - '0';
 		i++;
