@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 16:04:32 by femarque          #+#    #+#             */
-/*   Updated: 2023/07/11 13:51:09 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/11 17:47:06 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,17 @@ void	print_grid(int grid[SIZE][SIZE])
 		row++;
 		ft_putchar('\n');
 	}
+}
+
+void	free_grid(char **grid)
+{
+	int	i;
+
+	i = 0;
+	while (grid[i])
+	{
+		free(grid[i]);
+		i++;
+	}
+	free(grid);
 }

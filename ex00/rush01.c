@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 13:57:31 by femarque          #+#    #+#             */
-/*   Updated: 2023/07/11 17:11:38 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/11 17:53:49 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	main(int argc, char **argv)
 	int		i;
 	int		len;
 
+	grids = NULL;
 	if (argc != 2)
 	{
 		ft_error("Error");
@@ -41,6 +42,7 @@ int	main(int argc, char **argv)
 	i = -1;
 	while (++i < len)
 		res[i] = ft_atoi(grids[i]);
+	free_grid(grids);
 	if (fill_grid(0, 0, res, grid))
 		print_grid(grid);
 	else

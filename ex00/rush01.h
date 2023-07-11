@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 13:51:33 by femarque          #+#    #+#             */
-/*   Updated: 2023/07/11 15:58:05 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/11 17:47:13 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ void	ft_putnbr(int n);
 void	ft_putstr(char *str);
 void	ft_putchar(char c);
 void	ft_putendl_fd(char *s, int fd);
+void	free_grid(char **grid);
 
 #endif
