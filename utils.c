@@ -6,7 +6,7 @@
 /*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 13:54:11 by femarque          #+#    #+#             */
-/*   Updated: 2023/07/10 15:03:16 by femarque         ###   ########.fr       */
+/*   Updated: 2023/07/11 13:57:59 by femarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,57 +14,57 @@
 
 void	ft_putchar(char c)
 {
-    write(1, &c, 1);
+	write(1, &c, 1);
 }
 
 void	ft_putstr(char *str)
 {
-    int	i;
+	int	i;
 
 	i = 0;
-    while (str[i] != '\0')
+	while (str[i] != '\0')
 	{
-        ft_putchar(str[i]);
-        i++;
-    }
+		ft_putchar(str[i]);
+		i++;
+	}
 }
 
-void	ft_putnbr(int n) 
+void	ft_putnbr(int n)
 {
-    if (n < 0)
+	if (n < 0)
 	{
-        ft_putchar('-');
-        n = -n;
-    }
-    if (n >= 10)
+		ft_putchar('-');
+		n = -n;
+	}
+	if (n >= 10)
 	{
-        ft_putnbr(n / 10);
-        ft_putnbr(n % 10);
-    }
+		ft_putnbr(n / 10);
+		ft_putnbr(n % 10);
+	}
 	else
-        ft_putchar(n + '0');
+		ft_putchar(n + '0');
 }
 
 int	ft_atoi(char *str)
 {
 	int	result;
-    int	sign;
-    int	i;
-	
+	int	sign;
+	int	i;
+
 	result = 0;
-    sign = 1;
-    i = 0;
-    if (str[0] == '-')
-    {
-        sign = -1;
-        i++;
-    }
-    while (str[i] != '\0')
-    {
-        result = result * 10 + str[i] - '0';
-        i++;
-    }
-    return (sign * result);
+	sign = 1;
+	i = 0;
+	if (str[0] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	while (str[i] != '\0')
+	{
+		result = result * 10 + str[i] - '0';
+		i++;
+	}
+	return (sign * result);
 }
 
 void	*ft_memset(void *b, int c, size_t len)
