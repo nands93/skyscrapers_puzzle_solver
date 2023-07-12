@@ -1,1 +1,1 @@
-# rush01
+# Skyscrapers Puzzle Solver
