@@ -1,16 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   puzzle.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: femarque <femarque@student.42.rio>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/10 16:04:32 by femarque          #+#    #+#             */
-/*   Updated: 2023/07/11 17:47:06 by femarque         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "rush01.h"
+#include "skyscraper.h"
 
 int	is_valid(int row, int col, int value, int grid[SIZE][SIZE])
 {
@@ -65,7 +53,8 @@ void	print_grid(int grid[SIZE][SIZE])
 		while (col < SIZE)
 		{
 			ft_putnbr(grid[row][col]);
-			ft_putchar(' ');
+			if (col != SIZE - 1)
+				ft_putchar(' ');
 			col++;
 		}
 		row++;
