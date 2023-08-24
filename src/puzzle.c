@@ -1,4 +1,4 @@
-#include "skyscraper.h"
+#include "../libs/skyscraper.h"
 
 int	is_valid(int row, int col, int value, int grid[SIZE][SIZE])
 {

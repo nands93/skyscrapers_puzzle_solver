@@ -1,4 +1,4 @@
-#include "skyscraper.h"
+#include "../libs/skyscraper.h"
 
 int	array_len(char **array)
 {
@@ -24,12 +24,12 @@ int	main(int argc, char **argv)
 		ft_error("Error");
 		return (1);
 	}
-	ft_memset(grid, 0, sizeof(grid));
+	memset(grid, 0, sizeof(grid));
 	grids = ft_split(argv[1], ' ');
 	len = array_len(grids);
 	i = -1;
 	while (++i < len)
-		res[i] = ft_atoi(grids[i]);
+		res[i] = atoi(grids[i]);
 	free_grid(grids);
 	if (fill_grid(0, 0, res, grid))
 		print_grid(grid);

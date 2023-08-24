@@ -1,4 +1,4 @@
-#include "skyscraper.h"
+#include "../libs/skyscraper.h"
 
 int	top_col(int *res, int grid[SIZE][SIZE])
 {

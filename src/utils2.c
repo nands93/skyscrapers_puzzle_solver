@@ -1,4 +1,4 @@
-#include "skyscraper.h"
+#include "../libs/skyscraper.h"
 
 void	ft_putendl_fd(char *s, int fd)
 {
@@ -17,18 +17,6 @@ int	ft_error(char *s)
 {
 	ft_putendl_fd(s, 2);
 	return (-1);
-}
-
-size_t	ft_strlen(const char *s)
-{
-	int	len;
-
-	len = 0;
-	while (s[len] != '\0')
-	{
-		len++;
-	}
-	return (len);
 }
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
@@ -64,7 +52,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	len_s = ft_strlen((char *)s);
+	len_s = strlen((char *)s);
 	len_d = len_s - start;
 	if (start > len_s)
 		return (ft_strdup(""));

@@ -1,4 +1,4 @@
-#include "skyscraper.h"
+#include "../libs/skyscraper.h"
 
 static int	count_words(const char *s, char c)
 {
@@ -63,32 +63,15 @@ char	**ft_split(char const *s, char c)
 	return (str);
 }
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
-{
-	char	*d;
-	char	*s;
-	size_t	i;
-
-	d = (char *)dest;
-	s = (char *)src;
-	i = 0;
-	while (i < n)
-	{
-		d[i] = s[i];
-		i++;
-	}
-	return (dest);
-}
-
 char	*ft_strdup(const char *s1)
 {
 	size_t	len;
 	char	*copy;
 
-	len = ft_strlen(s1) + 1;
+	len = strlen(s1) + 1;
 	copy = malloc(len);
 	if (!(copy))
 		return (NULL);
-	ft_memcpy(copy, s1, len);
+	memcpy(copy, s1, len);
 	return (copy);
 }
