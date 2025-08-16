@@ -69,4 +69,4 @@ This project is provided for educational purposes.
 
 ## Author
 
-Developed by femarque.
+Developed by nands93.
